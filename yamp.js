@@ -10,9 +10,9 @@
  *     Yet Another Modal Plugin
  ***************************************************
  *	   Author : Patrick Lindsay
- *	   Version: 0.1.0
+ *	   Version: 0.2.0
  *	   Created: 2/21/2014
- *	   Updated: 2/21/2014
+ *	   Updated: 2/24/2014
  *	   License: GPL-3 https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)
  ****************************************************
  *	   Dependencies: jQuery 2.1.0+
@@ -49,7 +49,10 @@ $.fn.yampOpen = function(options){
 		height:options.height,
 		width:options.width,
 		opacity:options.opacity,
-	}, options.duration, options.easing, options.callback);
+	}, options.duration, options.easing);
+
+	if(typeof options.callback === 'function')
+		options.callback();
 
 	this.data('status', 'open');
 }
@@ -69,13 +72,16 @@ $.fn.yampClose = function(options){
 
 	console.log(options);
 
-	// this.css('display', 'none');
+	this.css('display', 'none');
 
 	this.stop().animate({
 		height:options.height,
 		width:options.width,
 		opacity:options.opacity,
-	}, options.duration, options.easing, options.callback);
+	}, options.duration, options.easing);
+
+	if(typeof options.callback === 'function')
+		options.callback();
 
 	this.data('status', 'closed');
 }
