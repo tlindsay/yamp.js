@@ -64,7 +64,7 @@ $('document').ready(function(){
     - Default Value: 'swing'
     - **This has not been tested with anything other than the default. Status of jQuery UI Easing Effects is unknown.**
   - _callback_ - function
-    - A callback function, if you wish to use one. **THIS FEATURE HAS NOT YET BEEN IMPLEMENTED AS OF v0.1.0**
+    - A callback function, if you wish to use one.
     - Default Value: null
 
 ---
@@ -91,7 +91,7 @@ $('document').ready(function(){
     - Default Value: 'swing'
     - **This has not been tested with anything other than the default. Status of jQuery UI Easing Effects is unknown.**
   - _callback_ - function
-    - A callback function, if you wish to use one. **THIS FEATURE HAS NOT YET BEEN IMPLEMENTED AS OF v0.1.0**
+    - A callback function, if you wish to use one.
     - Default Value: null
 
 ---
