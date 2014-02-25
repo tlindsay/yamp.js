@@ -96,5 +96,11 @@ $('document').ready(function(){
 
 ---
 
-####`yampToggle(options)`
-`$('#myYamp').yampToggle()` reads `$('#myYamp').data('status')` to determine whether the YAMP box with id "myYamp" is open or closed, and toggles accordingly. It passes `options` straight through, to either `yampOpen()` or `yampClose()`, so options should be appropriate for the function being called.
+####`yampToggle(openOptions, closeOptions)`
+`$('#myYamp').yampToggle()` reads `$('#myYamp').data('status')` to determine whether the YAMP box with id "myYamp" is open or closed, and toggles accordingly.
+
+#####Arguments
+- _openOptions_ - Object
+  - See [yampOpen](#yampopenoptions)
+- _closeOptions_ - Object
+  - See [yampClose](#yampcloseoptions)

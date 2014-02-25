@@ -2,7 +2,7 @@ $('document').ready(function(){
 	$('.yamp').yamp();
 
 	$('#modal-open').click(function(){
-		$('#myModal').yampToggle({
+		$('#myModal').yampOpen({
 			callback: function(){
 				console.log("Callback - Open");
 			}

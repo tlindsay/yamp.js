@@ -12,7 +12,7 @@
  *	   Author : Patrick Lindsay
  *	   Version: 0.2.0
  *	   Created: 2/21/2014
- *	   Updated: 2/24/2014
+ *	   Updated: 2/25/2014
  *	   License: GPL-3 https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)
  ****************************************************
  *	   Dependencies: jQuery 2.1.0+
@@ -29,7 +29,6 @@ $.fn.yamp = function(){
 }
 
 $.fn.yampOpen = function(options){
-	console.log("Opening!");
 	var defaults = {
 		duration : 360,
 		width    : 400,
@@ -38,27 +37,39 @@ $.fn.yampOpen = function(options){
 		easing   : 'swing',
 		callback : null
 	}
+	var parent = this.parent();
 
 	options = $.extend(defaults, options);
 
-	console.log(options);
+	var $top  = parseInt(String(parent.css('top')).replace('px',''))-(options.height/2);
+	var $left = parseInt(String(parent.css('left')).replace('px',''))-(options.width/2);
 
 	this.css('display', 'block');
-
-	this.stop().animate({
+	
+	this.animate({
 		height:options.height,
 		width:options.width,
-		opacity:options.opacity,
-	}, options.duration, options.easing);
+		opacity:options.opacity
+	},{
+		duration:options.duration,
+		easing:options.easing,
+		queue:false,
+		complete:options.callback
+	});
 
-	if(typeof options.callback === 'function')
-		options.callback();
+	parent.animate({
+		top:$top,
+		left:$left
+	},{
+		duration:options.duration,
+		easing:options.easing,
+		queue:false
+	});
 
 	this.data('status', 'open');
 }
 
 $.fn.yampClose = function(options){
-	console.log("Closing!");
 	var defaults = {
 		duration : 360,
 		width    : 0,
@@ -67,33 +78,44 @@ $.fn.yampClose = function(options){
 		easing   : 'swing',
 		callback : null	
 	}
+	var parent = this.parent();
 
 	options = $.extend(defaults, options);
+	var $top  = parseInt(String(parent.css('top')).replace('px',''))+(this.height()/2);
+	var $left = parseInt(String(parent.css('left')).replace('px',''))+(this.width()/2);
 
-	console.log(options);
-
-	this.css('display', 'none');
-
-	this.stop().animate({
+	this.animate({
 		height:options.height,
 		width:options.width,
-		opacity:options.opacity,
-	}, options.duration, options.easing);
-
-	if(typeof options.callback === 'function')
-		options.callback();
+		opacity:options.opacity
+	},{
+		duration:options.duration,
+		easing:options.easing,
+		queue:false,
+		complete:options.callback
+	});
+	
+	parent.animate({
+		top:$top,
+		left:$left
+	},{
+		duration:options.duration,
+		easing:options.easing,
+		queue:false,
+		complete:function(){
+			this.css('display', 'none');
+		}
+	});
 
 	this.data('status', 'closed');
 }
 
-$.fn.yampToggle = function(options){
+$.fn.yampToggle = function(openOptions, closeOptions){
 	console.log("Toggling!");
 
-	console.log("It is "+this.data('status')+".");
-
 	if(this.data('status') == 'closed'){
-		this.yampOpen(options);
+		this.yampOpen(openOptions);
 	}else{
-		this.yampClose(options);
+		this.yampClose(closeOptions);
 	}
 }
