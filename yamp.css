@@ -1,0 +1,13 @@
+.yamp-outer{position:fixed;}
+.yamp{
+	position:relative;
+	z-index:9999;
+}
+.yamp-inner{position:absolute;}
+
+.yampX{
+	position:absolute;
+	top:0;
+	right:0;
+}
+.yampX:hover{cursor:pointer;}
