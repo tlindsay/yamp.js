@@ -38,8 +38,19 @@ $('document').ready(function(){
 ---
 
 ##Functions
-####`yamp()`
-`$('.yamp').yamp();` initializes all YAMP boxes in the document.  As YAMP grows, yamp() will do more of the housekeeping for you (i.e. automating click handling, etc.).
+####`yamp(options)`
+`$('.yamp').yamp();` initializes all YAMP boxes in the document.
+#####Arguments
+- _options_ - Object
+  - _suppressKeyClose_ - Boolean
+    - Will suppress keypress binding to close the YAMP box.
+    - Default Value: `false`
+  - _closeKeyCode_ - Integer
+    - The key code that will be bound to close the YAMP box.
+    - Default Value: `27`
+  - _addX_ - Boolean
+    - If `true`, then YAMP will automatically append a close button in the top-right corner of the YAMP box.
+    - Default Value: `true`
 
 ---
 

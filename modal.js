@@ -2,9 +2,13 @@ $('document').ready(function(){
 	$('.yamp').yamp();
 
 	$('#modal-open').click(function(){
-		$('#myModal').yampOpen({
+		$('#myModal').yampToggle({
 			callback: function(){
-				console.log("Callback - Open");
+				console.log("Callback - Toggle(open)");
+			}
+		},{
+			callback: function(){
+				console.log("Callback - Toggle(close)");
 			}
 		});
 	});

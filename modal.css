@@ -1,0 +1,24 @@
+.yamp-button{
+	border: solid 1px black;
+	background-color:white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+.yamp-button:hover{cursor:pointer;}
+
+#myModal{
+	padding: 15px;
+	background-color:white;
+	border: 1px solid black;
+
+	top:100px;
+	left:300px;
+}
+
+#myModal .yamp-inner{
+	border:1px dotted #bfbfbf;
+}
+
+.yampX{
+	right:3px;
+}
